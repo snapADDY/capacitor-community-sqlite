@@ -1054,7 +1054,7 @@ export class UtilsSQLite {
     ) {
       // check for JSON string
       sql = this.dealJsonString(stmt);
-      sql = sql.replaceAll('"', "'");
+      // sql = sql.replaceAll('"', "'"); // commented out to ensure compatibility with typeorm
       sql = sql.replaceAll('§', '"');
     } else {
       sql = stmt;
