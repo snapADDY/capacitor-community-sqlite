@@ -52,9 +52,7 @@
     "build-electron": "tsc --project electron/tsconfig.json && rollup -c electron/rollup.config.js && rimraf ./electron/build",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "test": "echo \"No test specified\"",
-    "prepublishOnly": "npm run build && npm run build-electron && npm run docgen",
-    "postinstall": "npm run clean && tsc && rollup -c rollup.config.js && npm run build-electron"
+    "test": "echo \"No test specified\""
   },
   "devDependencies": {
     "@capacitor/android": "^5.0.5",
