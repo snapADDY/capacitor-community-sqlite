@@ -54,7 +54,7 @@
     "watch": "tsc --watch",
     "test": "echo \"No test specified\"",
     "prepublishOnly": "npm run build && npm run build-electron && npm run docgen",
-    "postinstall": "npm run build && npm run build-electron"
+    "postinstall": "npm run clean && tsc && rollup -c rollup.config.js && npm run build-electron"
   },
   "devDependencies": {
     "@capacitor/android": "^5.0.5",
