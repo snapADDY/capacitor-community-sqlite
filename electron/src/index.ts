@@ -362,7 +362,18 @@ export class CapacitorSQLite implements CapacitorSQLitePlugin {
         const queryResult: any[] = database.selectSQL(statement, values);
         return { values: queryResult };
       } catch (err) {
-        throw new Error(`Query: ${err}`);
+        try {
+          if (
+            err.message?.indexOf(
+              'QueryAll This statement does not return data. Use run() instead',
+            ) !== -1
+          ) {
+            const queryResult = database.runSQL(statement, values, false, 'no');
+            return { values: queryResult.values };
+          }
+        } catch (error) {
+          throw new Error(`Query: ${error}`);
+        }
       }
     } else {
       const msg = `Database ${dbName} not opened`;
